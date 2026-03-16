@@ -11,3 +11,6 @@ set(exeName myExe)
 add_executable(${exeName} src/main.cpp)
 
 target_include_directories(${exeName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+find_package(spdlog REQUIRED)
+target_link_libraries(${exeName} spdlog::spdlog)
