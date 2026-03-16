@@ -1,20 +1,20 @@
-#include <iostream>
+#include <string>
 
-inline void print(const std::string &message = "Hello World!");
+namespace GTN {
+extern unsigned int number;
+extern unsigned int numberUser;
+extern unsigned int numberOfTries;
 
-inline int inputNumber() {
-  int number;
-  print("Number: ");
-  std::cin >> number;
-  return number;
-}
+void guessLoop();
 
-inline void print(const std::string &message) { std::cout << message << '\n'; }
+void showTitle();
+void assignRandomNumber();
+unsigned int inputNumber();
+bool isInputValid();
+bool isGuessCorrect(const unsigned int &number);
+} // namespace GTN
 
-inline void printNumber(const float &number) {
-  std::cout << "Number: " << number << '\n';
-}
+namespace misc {
+void print(const std::string &string = "\n");
 
-inline float add(const float &firstNumber, const float &secondNumber) {
-  return firstNumber + secondNumber;
-}
+} // namespace misc
