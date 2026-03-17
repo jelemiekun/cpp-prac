@@ -8,6 +8,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(exeName myExe)
 
-add_executable(${exeName} src/main.cpp src/Timer.cpp)
+add_executable(${exeName} src/main.cpp src/Timer.cpp src/GTN.cpp src/Util.cpp)
 
 target_include_directories(${exeName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
