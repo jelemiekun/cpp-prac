@@ -26,7 +26,6 @@ void run() {
       print("HIGHER\n");
   }
 
-  print("You guessed the number with " + std::to_string(numberOfTries) +
-        " tries!\n");
+  showNumberOfTries();
   showTimeDuration();
 }

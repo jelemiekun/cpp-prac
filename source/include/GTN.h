@@ -15,5 +15,6 @@ unsigned int inputNumber();
 bool isInputValid();
 bool isGuessCorrect(const unsigned int &number);
 void stopTimer();
+void showNumberOfTries();
 void showTimeDuration();
 } // namespace GTN

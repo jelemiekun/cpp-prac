@@ -1,6 +1,7 @@
 #include "GTN.h"
 #include "Timer.h"
 #include "Util.h"
+#include <string>
 #include <iostream>
 #include <random>
 
@@ -48,6 +49,11 @@ bool isGuessCorrect(const unsigned int &number) {
 }
 
 void stopTimer() { timer.stop(); }
+
+void showNumberOfTries() {
+  print("You guessed the number with " + std::to_string(numberOfTries) +
+        " tries!\n");
+}
 
 void showTimeDuration() {
   print("Time it took: " + std::to_string(timer.duration.count()) +
