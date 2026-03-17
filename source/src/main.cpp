@@ -1,4 +1,5 @@
 #include "main.h"
+#include "Timer.h"
 #include <iostream>
 #include <random>
 #include <string>
@@ -9,6 +10,7 @@ int main() {
 }
 
 namespace GTN {
+Timer timer;
 unsigned int number;
 unsigned int numberUser;
 unsigned int numberOfTries;
@@ -16,6 +18,7 @@ unsigned int numberOfTries;
 void guessLoop() {
   showTitle();
   assignRandomNumber();
+  startTimer();
   bool guessed = false;
 
   while (!guessed) {
@@ -24,8 +27,10 @@ void guessLoop() {
     numberUser = inputNumber();
     guessed = isGuessCorrect(numberUser);
 
-    if (guessed)
+    if (guessed) {
+      stopTimer();
       break;
+    }
 
     if (numberUser > number)
       misc::print("LOWER\n");
@@ -35,6 +40,7 @@ void guessLoop() {
 
   misc::print("You guessed the number with " + std::to_string(numberOfTries) +
               " tries!\n");
+  showTimeDuration();
 }
 
 void showTitle() { misc::print("Guess the number! (1-100)\n"); }
@@ -45,6 +51,8 @@ void assignRandomNumber() {
   std::uniform_int_distribution<std::mt19937::result_type> dist6(1, 100);
   number = dist6(rng);
 }
+
+void startTimer() { timer.start(); }
 
 unsigned int inputNumber() {
   unsigned int number;
@@ -70,6 +78,13 @@ bool isInputValid() {
 
 bool isGuessCorrect(const unsigned int &number) {
   return number == GTN::number;
+}
+
+void stopTimer() { timer.stop(); }
+
+void showTimeDuration() {
+  misc::print("Time it took: " + std::to_string(timer.duration.count()) +
+              " seconds.\n");
 }
 
 } // namespace GTN
