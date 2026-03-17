@@ -9,5 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(exeName myExe)
 
 add_executable(${exeName} src/main.cpp)
+add_library(OTH src/Object.cpp src/Util.cpp)
 
-target_include_directories(${exeName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(${exeName} PRIVATE OTH)
+target_include_directories(OTH PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
