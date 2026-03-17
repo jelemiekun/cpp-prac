@@ -8,6 +8,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(exeName myExe)
 
-add_executable(${exeName} src/main.cpp src/Timer.cpp src/GTN.cpp src/Util.cpp)
+add_library(GSF src/Timer.cpp src/GTN.cpp src/Util.cpp) # Game Source Files
 
-target_include_directories(${exeName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_executable(${exeName} src/main.cpp)
+
+target_link_libraries(${exeName} PRIVATE GSF)
+
+target_include_directories(GSF PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
