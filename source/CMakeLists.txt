@@ -8,6 +8,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(exeName myExe)
 
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/Math)
+
 add_executable(${exeName} src/main.cpp)
 
-target_include_directories(${exeName} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(${exeName} Math)
